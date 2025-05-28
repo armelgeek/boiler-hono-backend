@@ -91,7 +91,6 @@ export const subscriptionHistory = pgTable('subscription_history', {
   timestamp: timestamp('timestamp').notNull().defaultNow()
 })
 
-
 export const roles = pgTable('roles', {
   id: text('id').primaryKey(),
   name: text('name').notNull().unique(),

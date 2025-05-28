@@ -14,11 +14,18 @@ export default config(
         'unicorn/filename-case': 'off',
         'no-console': 'off'
       }
+    },
+    {
+      files: ['docs/**/*'],
+      rules: {
+        'unicorn/filename-case': 'off',
+        'no-console': 'off'
+      }
     }
   ],
   {
     prettier: true,
-    markdown: true,
-    ignorePatterns: ['docs', 'drizzle/**']
+    markdown: false,
+    ignorePatterns: ['docs/**', 'drizzle/**']
   }
 )

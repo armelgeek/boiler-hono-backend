@@ -9,11 +9,7 @@ import { Actions, Subjects } from '@/domain/types/permission.type'
 
 const actionEnum = z.enum([Actions.CREATE, Actions.READ, Actions.UPDATE, Actions.DELETE])
 
-const subjectEnum = z.enum([
-  Subjects.ADMIN,
-  Subjects.STAT,
-  Subjects.ACTIVITY
-])
+const subjectEnum = z.enum([Subjects.ADMIN, Subjects.STAT, Subjects.ACTIVITY])
 
 export class PermissionController {
   public controller: OpenAPIHono

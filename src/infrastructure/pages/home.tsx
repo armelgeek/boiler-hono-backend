@@ -99,7 +99,7 @@ Home.get('/', (c) => {
             >
               <div class="flex flex-col">
                 <span class="text-xs uppercase bg-opacity-15 rounded text-center max-w-fit px-2 py-1 font-bold tracking-wide bg-blue-500 text-blue-500">
-                 Boiler Hono
+                  Boiler Hono
                 </span>
                 <span class="text-neutral-200 font-bold text-lg sm:text-xl md:text-2xl mt-2">API de BoilerHono</span>
                 <div class="text-neutral-500 mt-2">
