@@ -1,0 +1,72 @@
+# deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boilerhono-back
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: boilerhono-back
+  template:
+    metadata:
+      labels:
+        app: boilerhono-back
+    spec:
+      containers:
+        - name: boilerhono-back
+          image: registry.boilerhono.ac/backend-boilerhono:1.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: development
+            - name: DATABASE_URL
+              value: 'postgresql://postgres:password@postgres:5432/default_db?search_path=public'
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+      imagePullSecrets:
+        - name: nexus-registry-secret
+---
+# svc
+apiVersion: v1
+kind: Service
+metadata:
+  name: boilerhono-back
+spec:
+  selector:
+    app: boilerhono-back
+  ports:
+    - port: 3000
+      targetPort: 3000
+  type: ClusterIP
+---
+# ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dev-api.boilerhono.ac
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+spec:
+  tls:
+    - hosts:
+        - dev-api.boilerhono.ac
+      secretName: dev-api.boilerhono.ac-tls
+  rules:
+    - host: dev-api.boilerhono.ac
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: boilerhono-back
+                port:
+                  number: 3000
