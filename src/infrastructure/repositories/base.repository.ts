@@ -1,5 +1,8 @@
 import { eq, sql } from 'drizzle-orm'
-import type { BaseRepositoryWithPaginationInterface, PaginatedResult } from '@/domain/repositories/base.repository.interface'
+import type {
+  BaseRepositoryWithPaginationInterface,
+  PaginatedResult
+} from '@/domain/repositories/base.repository.interface'
 import type { BaseInsertModel, BaseSelectModel, BaseTable } from '@/domain/types/drizzle.types'
 import { db } from '../database/db'
 

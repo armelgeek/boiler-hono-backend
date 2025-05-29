@@ -1,11 +1,4 @@
-import type {
-  AnyTable,
-  Column,
-  InferInsertModel,
-  InferSelectModel,
-  Table,
-  TableConfig
-} from 'drizzle-orm'
+import type { Column, InferInsertModel, InferSelectModel, Table, TableConfig } from 'drizzle-orm'
 
 export interface BaseTable extends Table<TableConfig> {
   id: Column<any>
