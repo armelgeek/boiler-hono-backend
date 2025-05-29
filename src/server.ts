@@ -1,7 +1,8 @@
 import { App } from './app'
 import { PermissionController, UserController } from './infrastructure/controllers'
+import { UploadController } from './infrastructure/controllers/upload.controller'
 
-const app = new App([new UserController(), new PermissionController()]).getApp()
+const app = new App([new UserController(), new PermissionController(), new UploadController()]).getApp()
 
 const PORT = Bun.env.PORT || 3000
 
